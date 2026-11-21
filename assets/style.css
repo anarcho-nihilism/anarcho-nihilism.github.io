@@ -53,7 +53,16 @@ li > time { white-space: nowrap; }
 
 nav { display: flex; gap: 1rem; margin-top: 1.5rem; }
 
-img { max-width: 100%; height: auto; }
+/* Images: never wider than the text, never taller than the screen,
+   never stretched above their real size. Centered on their own line. */
+img {
+  display: block;
+  max-width: 100%;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  margin: 1.5rem auto;
+}
 pre { overflow-x: auto; padding: 1rem; background: var(--line); }
 code { font-size: .9em; }
 blockquote { margin: 1.5rem 0; padding-left: 1rem; border-left: 3px solid var(--accent); color: var(--muted); }
