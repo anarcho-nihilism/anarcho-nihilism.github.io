@@ -1,8 +1,8 @@
-# anarcho-nihilism.github.io
+# [anarcho-nihilism.github.io](https://anarcho-nihilism.github.io/)
 
 ## How to write a new text
 
-1. On github.com open the folder `blog/_posts/`.
+1. On github.com open the folder [`blog/_posts/`](https://github.com/anarcho-nihilism/anarcho-nihilism.github.io/tree/main/blog/_posts).
 2. Click "Add file", then "Create new file".
 3. Name the file `YYYY-MM-DD-some-name.md`, for example `2026-11-21-my-text.md`.
    The date sets the order of texts. The name becomes part of the URL.
@@ -16,7 +16,7 @@ To edit a text, open its file, click the pencil icon, change it, commit.
 
 Static pages (like the manifest) live in the folder `pages/`.
 
-1. On github.com open the folder `pages/`.
+1. On github.com open the folder [`pages/`](https://github.com/anarcho-nihilism/anarcho-nihilism.github.io/tree/main/pages).
 2. Click "Add file", then "Create new file".
 3. Name the file `some-name.md`. The page will be at `/some-name/`.
    For example, `pages/manifest.md` is at `/manifest/`.
@@ -27,7 +27,7 @@ Static pages (like the manifest) live in the folder `pages/`.
 
 Images live in the folder `assets/images/`.
 
-1. On github.com open the folder `assets/images/`.
+1. On github.com open the folder [`assets/images/`](https://github.com/anarcho-nihilism/anarcho-nihilism.github.io/tree/main/assets/images).
 2. Click "Add file", then "Upload files". Choose the image and commit.
 3. In your text, write:
 
