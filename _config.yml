@@ -11,6 +11,11 @@ titles_from_headings:
   strip_title: true
   collections: true
 
+# Markdown files without front matter become pages (GitHub default).
+# Do not also publish the raw .md file next to the page.
+optional_front_matter:
+  remove_originals: true
+
 # Pagination of the texts list: /texts/, /texts/page2/, ...
 paginate: 10
 paginate_path: "/texts/page:num/"
@@ -24,9 +29,17 @@ defaults:
       type: posts
     values:
       layout: post
+  # Static pages live in pages/: pages/manifest.md -> /manifest/
+  - scope:
+      path: "pages"
+    values:
+      layout: default
+      permalink: /:basename/
 
+# Repo files like README.md are not pages. Matches root files starting
+# with a capital letter. Lowercase names (articles, pages) are kept.
 exclude:
-  - README.md
+  - "[A-Z]*.md"
   - Gemfile
   - Gemfile.lock
   - vendor
