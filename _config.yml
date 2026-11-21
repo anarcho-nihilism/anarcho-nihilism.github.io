@@ -1,8 +1,16 @@
 title: anarcho-nihilism
+# Short text for search results and link previews of the home page.
+description: TODO write one sentence about the site
+url: https://anarcho-nihilism.github.io
+lang: en
 
 plugins:
   - jekyll-paginate
   - jekyll-titles-from-headings
+  # SEO: meta tags, sitemap.xml + robots.txt, RSS feed at /feed.xml
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
 
 # Take the title from the first "# heading" of a file, also for articles.
 # The heading is removed from the body, so it is not shown twice.
