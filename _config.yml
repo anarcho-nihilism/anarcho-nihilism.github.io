@@ -3,7 +3,7 @@ title: Chaos League
 description: A collection of independent essays on post-left nihilism and anarchism.
 # Default author shown on text cards and articles.
 # One article can override it with "author: Name" in front matter.
-author: Loki
+author: None
 # Social links in the footer. Example:
 #   - name: Telegram
 #     url: https://t.me/example

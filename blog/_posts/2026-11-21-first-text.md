@@ -1,3 +1,7 @@
+---
+author: Loki
+---
+
 # First text
 
 This is an example article. Edit or delete it on GitHub.
