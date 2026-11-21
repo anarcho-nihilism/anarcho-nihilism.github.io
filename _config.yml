@@ -1,0 +1,32 @@
+title: anarcho-nihilism
+
+plugins:
+  - jekyll-paginate
+  - jekyll-titles-from-headings
+
+# Take the title from the first "# heading" of a file, also for articles.
+# The heading is removed from the body, so it is not shown twice.
+titles_from_headings:
+  enabled: true
+  strip_title: true
+  collections: true
+
+# Pagination of the texts list: /texts/, /texts/page2/, ...
+paginate: 10
+paginate_path: "/texts/page:num/"
+
+# Article URLs: /texts/2026/11/my-title/
+permalink: /texts/:year/:month/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
