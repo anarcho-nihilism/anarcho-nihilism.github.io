@@ -1,0 +1,20 @@
+{% comment %}
+  One text card. Params: post, n (its number in the list).
+  The picture is the first <img> of the post. No image: a black box.
+{% endcomment %}
+{% assign tape = include.n | modulo: 4 %}
+{% assign parts = include.post.content | split: '<img' %}
+{% assign src = '' %}
+{% if parts.size > 1 %}
+  {% assign after = parts[1] | split: 'src="' %}
+  {% assign src = after[1] | split: '"' | first %}
+{% endif %}
+<a class="card card--{{ tape }}" href="{{ include.post.url | relative_url }}">
+  <span class="card-num">{% if include.n < 10 %}0{% endif %}{{ include.n }}</span>
+  <span class="card-pic">
+    {% if src != '' %}<img src="{{ src }}" alt="" loading="lazy">{% endif %}
+  </span>
+  <span class="card-tape" aria-hidden="true"></span>
+  <span class="card-title">{{ include.post.title }}</span>
+  <span class="card-author">[ {{ include.post.author | default: site.author }} ]</span>
+</a>

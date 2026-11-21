@@ -1,6 +1,13 @@
-title: anarcho-nihilism
+title: Chaos League
 # Short text for search results and link previews of the home page.
-description: TODO write one sentence about the site
+description: A collection of independent essays on post-left nihilism and anarchism.
+# Default author shown on text cards and articles.
+# One article can override it with "author: Name" in front matter.
+author: Loki
+# Social links in the footer. Example:
+#   - name: Telegram
+#     url: https://t.me/example
+social: []
 url: https://anarcho-nihilism.github.io
 lang: en
 
@@ -41,7 +48,7 @@ defaults:
   - scope:
       path: "pages"
     values:
-      layout: default
+      layout: page
       permalink: /:basename/
 
 # Repo files like README.md are not pages. Matches root files starting
@@ -51,3 +58,4 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - vendor
+  - Fliege-mono.zip
