@@ -1,0 +1,15 @@
+---
+layout: default
+---
+{% comment %} All texts of one language: en/texts/index.html etc. {% endcomment %}
+{% assign t = site.data.i18n[page.lang] %}
+{% assign posts = site.categories[page.lang] %}
+<section class="texts texts--page">
+  <h1 class="big-title">{{ t.texts }}<img class="scribble scribble--2" src="{{ '/assets/design/scribble-2.svg' | relative_url }}" alt=""></h1>
+  <div class="cards">
+    {% for post in posts %}
+    {% include card.html post=post n=forloop.index %}
+    {% endfor %}
+  </div>
+  {% if posts.size == 0 or posts == nil %}<p class="more">[ {{ t.no_texts }} ]</p>{% endif %}
+</section>

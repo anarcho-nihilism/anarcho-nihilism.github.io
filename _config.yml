@@ -10,11 +10,12 @@ author: None
 social: []
 url: https://anarcho-nihilism.github.io
 lang: en
+# Site languages. Each has a folder (en/, pl/, ru/) and words in _data/i18n.yml.
+languages: [en, pl, ru]
 
 plugins:
-  - jekyll-paginate
   - jekyll-titles-from-headings
-  # SEO: meta tags, sitemap.xml + robots.txt, RSS feed at /feed.xml
+  # SEO: meta tags, sitemap.xml + robots.txt, RSS feeds
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-feed
@@ -31,12 +32,13 @@ titles_from_headings:
 optional_front_matter:
   remove_originals: true
 
-# Pagination of the texts list: /texts/, /texts/page2/, ...
-paginate: 10
-paginate_path: "/texts/page:num/"
+# Article URLs: /pl/texts/2026/11/my-title/
+# The language comes from the folder: pl/_posts/ gives category "pl".
+permalink: /:categories/texts/:year/:month/:title/
 
-# Article URLs: /texts/2026/11/my-title/
-permalink: /texts/:year/:month/:title/
+# One RSS feed per language: /feed/en.xml, /feed/pl.xml, /feed/ru.xml
+feed:
+  categories: [en, pl, ru]
 
 defaults:
   - scope:
@@ -44,12 +46,56 @@ defaults:
       type: posts
     values:
       layout: post
-  # Static pages live in pages/: pages/manifest.md -> /manifest/
+  # Everything in a language folder gets that language.
   - scope:
-      path: "pages"
+      path: "en"
+    values:
+      lang: en
+  # Search/preview text for pages (home, texts, manifest...).
+  # Articles use their first paragraph instead.
+  - scope:
+      path: "en"
+      type: pages
+    values:
+      description: "A collection of independent essays on post-left nihilism and anarchism."
+  - scope:
+      path: "pl"
+    values:
+      lang: pl
+  # Search/preview text for pages (home, texts, manifest...).
+  # Articles use their first paragraph instead.
+  - scope:
+      path: "pl"
+      type: pages
+    values:
+      description: "Zbiór niezależnych esejów o postlewicowym nihilizmie i anarchizmie."
+  - scope:
+      path: "ru"
+    values:
+      lang: ru
+  # Search/preview text for pages (home, texts, manifest...).
+  # Articles use their first paragraph instead.
+  - scope:
+      path: "ru"
+      type: pages
+    values:
+      description: "Сборник независимых эссе о постлевом нигилизме и анархизме."
+  # Static pages: pl/pages/manifest.md -> /pl/manifest/
+  - scope:
+      path: "en/pages"
     values:
       layout: page
-      permalink: /:basename/
+      permalink: /en/:basename/
+  - scope:
+      path: "pl/pages"
+    values:
+      layout: page
+      permalink: /pl/:basename/
+  - scope:
+      path: "ru/pages"
+    values:
+      layout: page
+      permalink: /ru/:basename/
 
 # Repo files like README.md are not pages. Matches root files starting
 # with a capital letter. Lowercase names (articles, pages) are kept.

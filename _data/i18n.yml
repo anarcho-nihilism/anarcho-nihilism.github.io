@@ -1,0 +1,40 @@
+# Interface words for each language. Article texts are not here.
+en:
+  name: English
+  menu_texts: texts
+  menu_manifesto: manifesto
+  menu_about: about
+  who_we_are: Who we are
+  lead: a collection of independent essays on post-left nihilism and anarchism
+  quote: I have set my cause on nothing.
+  texts: Texts
+  all_texts: all texts
+  no_texts: no texts yet
+  manifesto_1: Our
+  manifesto_2: manifesto
+pl:
+  name: Polski
+  menu_texts: teksty
+  menu_manifesto: manifest
+  menu_about: o nas
+  who_we_are: Kim jesteśmy
+  lead: zbiór niezależnych esejów o postlewicowym nihilizmie i anarchizmie
+  quote: Postawiłem swą sprawę na niczym.
+  texts: Teksty
+  all_texts: wszystkie teksty
+  no_texts: na razie brak tekstów
+  manifesto_1: Nasz
+  manifesto_2: manifest
+ru:
+  name: Русский
+  menu_texts: тексты
+  menu_manifesto: манифест
+  menu_about: о нас
+  who_we_are: Кто мы
+  lead: сборник независимых эссе о постлевом нигилизме и анархизме
+  quote: Я построил своё дело на ничто.
+  texts: Тексты
+  all_texts: все тексты
+  no_texts: пока нет текстов
+  manifesto_1: Наш
+  manifesto_2: манифест

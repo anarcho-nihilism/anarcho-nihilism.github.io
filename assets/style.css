@@ -203,15 +203,6 @@ a:focus-visible { outline: 2px dashed currentColor; outline-offset: 3px; }
 .more a { text-decoration: none; }
 .more a:hover { text-decoration: underline; text-underline-offset: .2em; }
 
-.pager {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem 2rem;
-  margin-top: 3rem;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-}
-.pager a { text-decoration: none; }
 
 /* ---------- Manifesto: black band between torn paper ---------- */
 .manifesto {
@@ -311,3 +302,19 @@ a:focus-visible { outline: 2px dashed currentColor; outline-offset: 3px; }
 .article hr { border: 0; border-top: 2px solid var(--ink); margin: 2.5rem 0; }
 .article table { display: block; overflow-x: auto; border-collapse: collapse; }
 .article th, .article td { padding: .4rem .8rem; border: 1px solid rgba(0, 0, 0, .25); }
+
+/* ---------- Languages ---------- */
+.langs { display: flex; justify-content: flex-end; gap: .75em; }
+.langs a[aria-current] { text-decoration: underline; text-underline-offset: .2em; }
+@media (max-width: 699px) { .langs { justify-content: flex-start; } }
+
+/* Root page: first visit, choose a language. */
+.choose {
+  display: grid;
+  justify-items: center;
+  padding: max(2rem, 6vw) var(--pad) 0;
+  text-align: center;
+}
+.choose-langs { display: grid; justify-items: center; gap: .15em; }
+.choose-langs a { font-size: clamp(3.5rem, 11vw, 10rem); text-decoration: none; }
+.choose-langs a:hover, .choose-langs a:focus-visible { background: var(--label); }

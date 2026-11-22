@@ -1,0 +1,26 @@
+{%- comment -%}
+  Links to this page in other languages. Param: mode ("head" or "nav").
+  An article with "ref: x" in front matter links to the article with the
+  same ref in another language. Other pages match by URL:
+  /pl/manifest/ <-> /en/manifest/. No match: that language's home.
+{%- endcomment -%}
+{%- assign prefix = '/' | append: page.lang | append: '/' -%}
+{%- for l in site.languages -%}
+  {%- assign href = '/' | append: l | append: '/' -%}
+  {%- assign same = nil -%}
+  {%- if l == page.lang -%}
+    {%- assign same = page -%}
+  {%- elsif page.ref -%}
+    {%- assign same = site.posts | where: 'ref', page.ref | where: 'lang', l | first -%}
+    {%- unless same -%}{%- assign same = site.pages | where: 'ref', page.ref | where: 'lang', l | first -%}{%- endunless -%}
+  {%- else -%}
+    {%- assign target = page.url | remove_first: prefix | prepend: href -%}
+    {%- assign same = site.pages | where: 'url', target | first -%}
+  {%- endif -%}
+  {%- if same -%}{%- assign href = same.url -%}{%- endif -%}
+  {%- if include.mode == 'head' -%}
+    {%- if same -%}<link rel="alternate" hreflang="{{ l }}" href="{{ href | absolute_url }}">{%- endif -%}
+  {%- else -%}
+    <a href="{{ href | relative_url }}" hreflang="{{ l }}" lang="{{ l }}"{% if l == page.lang %} aria-current="true"{% endif %}>{{ l }}</a>
+  {%- endif -%}
+{%- endfor -%}

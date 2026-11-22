@@ -1,31 +1,32 @@
 ---
 layout: default
+title: Choose language
 ---
-<section class="hero">
-  <img class="hero-paper" src="{{ '/assets/design/torn-hole.webp' | relative_url }}" alt="" width="1440" height="1019" fetchpriority="high">
-  <img class="hero-quote" src="{{ '/assets/design/quote.svg' | relative_url }}" alt="I have set my cause on nothing." width="223" height="141">
-  <img class="hero-tape" src="{{ '/assets/design/tape-long.webp' | relative_url }}" alt="" width="1600" height="805">
-</section>
-
-<section class="about">
-  <h2 class="big-title">Who we are<img class="scribble scribble--1" src="{{ '/assets/design/scribble-1.svg' | relative_url }}" alt=""></h2>
-  <p class="lead">[ a collection of independent essays on post-left nihilism and anarchism ]</p>
-</section>
-
-<section class="texts">
-  <h2 class="big-title"><a href="{{ '/texts/' | relative_url }}">Texts</a><img class="scribble scribble--2" src="{{ '/assets/design/scribble-2.svg' | relative_url }}" alt=""></h2>
-  <div class="cards">
-    {% for post in site.posts limit:4 %}
-    {% include card.html post=post n=forloop.index %}
+{% comment %}
+  First visit: choose a language. The choice is remembered in the browser
+  (every page of a language saves it), so next time "/" opens it at once.
+{% endcomment %}
+<script>
+  try {
+    var saved = localStorage.getItem('lang');
+    if ({{ site.languages | jsonify }}.indexOf(saved) > -1) location.replace('/' + saved + '/');
+  } catch (e) {}
+</script>
+<section class="choose">
+  <nav class="choose-langs" aria-label="Language">
+    {% for l in site.languages %}
+    <a class="big-title" href="{{ '/' | append: l | append: '/' | relative_url }}" hreflang="{{ l }}" lang="{{ l }}" data-lang="{{ l }}">{{ site.data.i18n[l].name }}</a>
     {% endfor %}
-  </div>
-  <p class="more"><a href="{{ '/texts/' | relative_url }}">[ all texts → ]</a></p>
+  </nav>
 </section>
-
-<section class="manifesto">
-  <img class="strip strip--top" src="{{ '/assets/design/torn-strip.webp' | relative_url }}" alt="">
-  <a class="labels" href="{{ '/manifest/' | relative_url }}">
-    <span>Our</span>
-    <span>manifesto</span>
-  </a>
-</section>
+<script>
+  // Put the browser's language first.
+  (function () {
+    var nav = document.querySelector('.choose-langs');
+    var wanted = (navigator.languages || [navigator.language || '']);
+    for (var i = 0; i < wanted.length; i++) {
+      var a = nav.querySelector('[data-lang="' + String(wanted[i]).slice(0, 2).toLowerCase() + '"]');
+      if (a) { nav.insertBefore(a, nav.firstChild); return; }
+    }
+  })();
+</script>

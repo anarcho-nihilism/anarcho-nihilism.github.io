@@ -1,24 +1,39 @@
 <!doctype html>
-<html lang="{{ site.lang | default: 'en' }}">
+{% assign lang = page.lang %}
+{% assign t = site.data.i18n[lang] %}
+{% if lang %}{% assign home = '/' | append: lang | append: '/' %}{% else %}{% assign home = '/' %}{% endif %}
+<html lang="{{ lang | default: site.lang }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% seo %}
+  {% if lang %}
+  <link type="application/atom+xml" rel="alternate" href="{{ '/feed/' | append: lang | append: '.xml' | absolute_url }}" title="{{ site.title }}">
+  {% include translations.html mode="head" %}
+  {% if page.url == home %}<link rel="alternate" hreflang="x-default" href="{{ '/' | absolute_url }}">{% endif %}
+  <script>try { localStorage.setItem('lang', '{{ lang }}'); } catch (e) {}</script>
+  {% else %}
   {% feed_meta %}
+  {% endif %}
   <link rel="preload" href="{{ '/assets/fonts/FliegeMono-Medium.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cousine&family=Sofia+Sans+Extra+Condensed:wght@900&display=swap">
   <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
 </head>
-<body{% if page.url == '/' %} class="home"{% endif %}>
+<body{% if lang and page.url == home %} class="home"{% endif %}>
   <header class="site-header">
-    <a class="brand" href="{{ '/' | relative_url }}">[ {{ site.title }} ]</a>
+    {% if lang %}
+    <a class="brand" href="{{ home | relative_url }}">[ {{ site.title }} ]</a>
     <nav class="menu" aria-label="Main">
-      <a href="{{ '/texts/' | relative_url }}">[ texts ]</a>
-      <a href="{{ '/manifest/' | relative_url }}">[ manifesto ]</a>
-      <a href="{{ '/about/' | relative_url }}">[ about ]</a>
+      <a href="{{ home | append: 'texts/' | relative_url }}">[ {{ t.menu_texts }} ]</a>
+      <a href="{{ home | append: 'manifest/' | relative_url }}">[ {{ t.menu_manifesto }} ]</a>
+      <a href="{{ home | append: 'about/' | relative_url }}">[ {{ t.menu_about }} ]</a>
     </nav>
+    <nav class="langs" aria-label="Language">{% include translations.html mode="nav" %}</nav>
+    {% else %}
+    <span class="brand">[ {{ site.title }} ]</span>
+    {% endif %}
   </header>
   <main>
     {{ content }}
@@ -29,7 +44,7 @@
       <li><a href="{{ link.url }}">[ {{ link.name }} ]</a></li>
       {% endfor %}
     </ul>
-    <a class="footer-logo" href="{{ '/' | relative_url }}"><img src="{{ '/assets/design/logo.svg' | relative_url }}" alt="{{ site.title }}" width="422" height="169"></a>
+    <a class="footer-logo" href="{{ home | relative_url }}"><img src="{{ '/assets/design/logo.svg' | relative_url }}" alt="{{ site.title }}" width="422" height="169"></a>
     <p class="copy">{{ site.title }}, {{ site.time | date: '%Y' }}</p>
   </footer>
 </body>

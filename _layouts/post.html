@@ -6,4 +6,5 @@ layout: default
   <p class="meta">[ {{ page.author | default: site.author }} ] <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time></p>
   {{ content }}
 </article>
-<p class="more article-more"><a href="{{ '/texts/' | relative_url }}">[ all texts → ]</a></p>
+{% assign t = site.data.i18n[page.lang] %}
+<p class="more article-more"><a href="{{ '/' | append: page.lang | append: '/texts/' | relative_url }}">[ {{ t.all_texts }} → ]</a></p>
