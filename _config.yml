@@ -1,6 +1,6 @@
 title: Chaos League
 # Short text for search results and link previews of the home page.
-description: A collection of independent essays on post-left nihilism and anarchism.
+description: The anarchist idea is irrelevant today without the nihilism it needs. The madness of modernity demands an uncompromising vivisection by post-left thought, which you will find here.
 # Default author shown on text cards and articles.
 # One article can override it with "author: Name" in front matter.
 author: None
@@ -57,7 +57,7 @@ defaults:
       path: "en"
       type: pages
     values:
-      description: "A collection of independent essays on post-left nihilism and anarchism."
+      description: "The anarchist idea is irrelevant today without the nihilism it needs. The madness of modernity demands an uncompromising vivisection by post-left thought, which you will find here."
   - scope:
       path: "pl"
     values:
@@ -68,7 +68,7 @@ defaults:
       path: "pl"
       type: pages
     values:
-      description: "Zbiór niezależnych esejów o postlewicowym nihilizmie i anarchizmie."
+      description: "Idea anarchistyczna jest dziś nieaktualna bez niezbędnego nihilizmu. Szaleństwo współczesności wymaga bezkompromisowej wiwisekcji ze strony myśli postlewicowej, którą znajdziesz tutaj."
   - scope:
       path: "ru"
     values:
@@ -79,7 +79,7 @@ defaults:
       path: "ru"
       type: pages
     values:
-      description: "Сборник независимых эссе о постлевом нигилизме и анархизме."
+      description: "Анархическая идея сегодня неактуальна без необходимого нигилизма. Безумие современности требует бескомпромиссной вивисекции со стороны постлевой мысли, которую ты найдёшь тут."
   # Static pages: pl/pages/manifest.md -> /pl/manifest/
   - scope:
       path: "en/pages"
